@@ -3,6 +3,12 @@ import Header from './components/header.js';
 import AddContact from './components/add-contact.js';
 import ContactList from './components/contact-list.js';
 import { v4 as uuid4 } from 'uuid';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -20,7 +26,6 @@ const removeContactHandler = (id) => {
 }
 useEffect(()=>{
   const retrieveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-  console.log(retrieveContacts);
   if(retrieveContacts.length>0) setContacts(retrieveContacts);
 }, [])
 
@@ -36,8 +41,16 @@ useEffect(()=>{
   return (
     <div>
       <Header />
-      <AddContact addContactHandler={addContactHandler}/>
-      <ContactList contacts={contacts} getContactId={removeContactHandler}/>
+      <BrowserRouter>
+      <Routes>
+            <Route index element={<ContactList contacts={contacts} getContactId={removeContactHandler}/> }/>
+            <Route path='/add' element={<AddContact addContactHandler={addContactHandler}/>}/>
+      </Routes>
+
+      </BrowserRouter>
+
+      {/* <AddContact addContactHandler={addContactHandler}/>
+      <ContactList contacts={contacts} getContactId={removeContactHandler}/> */}
     </div>
   );
 }
