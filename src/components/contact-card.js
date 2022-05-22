@@ -11,7 +11,9 @@ const {id, name, email} = props.contacts
         <div className="w-full h-auto">
             <div key={id} className='flex justify-between items-center'>
                 <div>
-                    <Link to={`/contact/${id}`}>
+                <Link
+  to={`/contact/${id}`}
+  state={{data: props.contacts}}>
                       <div className='font-bold'>{name}</div>
                       <div>{email}</div>
                     </Link>
