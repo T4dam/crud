@@ -19,7 +19,7 @@ const AddContact = (props) => {
 
   return (
     <div>
-        <h2 className='text-lg font-bold my-3'>Add Contact</h2>
+        <h2 className='text-lg font-bold my-3'>Add New Contact</h2>
         <form className='w-300 h-500' onSubmit={handleSubmit}>
             <div>
                 <div>  <TextField sx={{height: 'auto', width: '100%'}}
